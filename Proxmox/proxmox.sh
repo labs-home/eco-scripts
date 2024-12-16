@@ -21,7 +21,7 @@ fi
 
 # Set the power state based on the argument
 if [ "$1" = "performance" ] || [ "$1" = "powersave" ]; then
-    echo "$1" > /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+    echo "$1" | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor > /dev/null
 else
     echo "Invalid argument: $1"
     echo "Usage: $0 [performance|powersave]"
